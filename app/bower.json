@@ -1,0 +1,14 @@
+{
+  "name": "socknet",
+  "version": "0.0.0",
+  "authors": [
+    "prijindal <priyanshujindal1995@gmail.com>"
+  ],
+  "description": "A chat application",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "bootstrap": "4"
+  }
+}

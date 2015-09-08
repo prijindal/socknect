@@ -1,0 +1,24 @@
+{
+  "name": "socknet",
+  "version": "0.0.0",
+  "description": "A chat Application",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prijindal/socknet.git"
+  },
+  "author": "prijindal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prijindal/socknet/issues"
+  },
+  "homepage": "https://github.com/prijindal/socknet#readme",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-ruby-sass": "^1.4.0"
+  },
+  "devDependencies": {
+    "gulp-ruby-sass": "^1.4.0",
+    "gulp-sourcemaps": "^1.5.2"
+  }
+}
