@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>SocKnet - Chat</title>
-    <link rel="stylesheet" href="../static/build/css/app.css">
-  </head>
-  <body>
+
     <nav class="navbar navbar-light bg-faded">
       <a class="navbar-brand" href="#">SocKnet</a>
-      <form class="form-inline navbar-form pull-right" action="home.html">
-        <input class="form-control" type="text" placeholder="Enter a username">
+      <form class="form-inline navbar-form pull-right" ng-submit="login.submit()">
+        <input class="form-control" type="text" placeholder="Enter a username" ng-model="login.user.username">
         <button class="btn btn-success-outline" type="submit">Chat</button>
       </form>
     </nav>
@@ -19,5 +12,3 @@
         <p class="lead">Simple Chat Application</p>
       </div>
     </div>
-  </body>
-</html>

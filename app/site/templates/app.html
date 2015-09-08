@@ -1,0 +1,45 @@
+
+    <div class="container-fluid">
+      <div class="col-sm-4 col-lg-3 col-xl-2 column">
+        <ul class="list-group people">
+          <li ng-class="{'active':app.current==value}" class="list-group-item" ng-repeat="(key, value) in app.users">
+            <span class="label label-default label-pill pull-right">{{app.getMessages(value)}}</span>
+            {{value}}
+          </li>
+        <button class="btn btn-success-outline" ng-click="app.logout()">Logout</button>
+        </ul>
+      </div>
+      <div class="col-sm-8 col-lg-9 col-xl-10 column">
+        <ul class="list-group messages">
+          <div ng-repeat="message in app.messages">
+            <li ng-if="message.type=='chat'" class="list-group-item">
+              <h4 class="list-group-item-heading">{{message.username}}</h4>
+              <span class="label label-pill label-default pull-right" ng-bind="getCurrentTime(message.time)"></span>
+              <p class="list-group-item-text">{{message.message}}</p>
+            </li>
+            <li ng-if="message.type=='alert' && message.connect==0" class="alert alert-danger system text-center" role="alert">
+              <strong>{{message.username}}</strong> unjoined the room
+              <span class="label label-pill label-default pull-right" ng-bind="getCurrentTime(message.time)"></span>
+            </li>
+            <li ng-if="message.type=='alert' && message.connect==1" class="alert alert-success system text-center" role="alert">
+              <strong>{{message.username}}</strong> joined the room
+              <span class="label label-pill label-default pull-right" ng-bind="getCurrentTime(message.time)"></span>
+            </li>
+          </div>
+        </ul>
+        <div class="chat-input">
+          <div class="typing" ng-show="app.typing.username">
+            <span class="label label-primary">{{app.typing.username}} is typing</span>
+          </div>
+          <form disabled="true" ng-submit="app.send()">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">{{app.current}}: </span>
+              <input type="text" class="form-control" placeholder="Enter message..." ng-keyup="app.type()" ng-model="app.message">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Send!</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>

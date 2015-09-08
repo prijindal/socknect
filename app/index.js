@@ -9,31 +9,36 @@ server.listen(80, function() {
     console.log('SERVER IS ON...')
 });
 
-app.use('/static', express.static('./site/static/'))
+app.use('/static', express.static('./site/static/build/'))
+app.use('/templates', express.static('./site/templates/'))
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/site/index.html');
 });
 
-
 var people = {}
+
+app.post('/users', function(req, res) {
+    res.send(people)
+})
 
 io.on('connection', function (socket) {
     socket.on('user_connect', function(userDetails) {
         people[socket.id] = userDetails.username
-        socket.broadcast.emit('user_connect', {username:people[socket.id]})
-        socket.broadcast.emit('users-list', people)
+        io.emit('user_connect', {username:people[socket.id]})
+        io.emit('users_list', people)
     })
 
     socket.on('disconnect', function() {
-        console.log('User Disconnected',{username:people[socket.id]})
-        socket.broadcast.emit('user_disconnect', {username:people[socket.id]})
-        delete people[socket.id]
-        socket.broadcast.emit('users-list', people)
+        if (people[socket.id]){
+            io.emit('user_disconnect', {username:people[socket.id]})
+            delete people[socket.id]
+            io.emit('users_list', people)
+        }
     })
 
     socket.on('message', function(message) {
-        socket.broadcast.emit('message', {message:message, username:people[socket.id]})
+        io.emit('message', {message:message, username:people[socket.id]})
     })
 
     socket.on('typing', function() {

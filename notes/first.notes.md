@@ -17,6 +17,4 @@
 - Bootstrap (Just for Bootstrapping)
 
 ## Tasks
-- Complete Front end
-- Do the Back end
 - Do Angular

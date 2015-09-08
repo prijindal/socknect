@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>SocKnet - Home</title>
-    <link rel="stylesheet" href="./static/build/css/app.css">
+    <link rel="stylesheet" href="./static/css/app.css">
   </head>
-  <body>
-
+  <body ng-app="Socknet">
+    <div class="page body" ng-view></div>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/static/build/js/vendor.js"></script>
-    <script src="/static/build/js/app.js"></script>
+    <script src="/static/js/vendor.js"></script>
+    <script src="/static/js/app.js"></script>
   </body>
 </html>

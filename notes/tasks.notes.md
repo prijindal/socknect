@@ -1,5 +1,0 @@
-- Design The Project Architecture
-- Design the front end
-- Make the Front end
-- Make the back end
-- Make the Controller/Angular code
