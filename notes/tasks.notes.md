@@ -1,0 +1,8 @@
+- Take a look at the previous projects using express
+- Make the App Structure
+- Decide a freaking name
+- Design The Project Architecture
+- Design the front end
+- Make the Front end
+- Make the back end
+- Make the Controller/Angular code
