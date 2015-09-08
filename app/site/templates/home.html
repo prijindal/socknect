@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SocKnet - Chat</title>
+    <link rel="stylesheet" href="../static/build/css/app.css">
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="col-sm-4 column">
+        <ul class="list-group people">
+          <li class="list-group-item">
+            <span class="label label-default label-pill pull-right">12</span>
+            prijindal
+          </li>
+          <li class="list-group-item">
+            <span class="label label-default label-pill pull-right">4</span>
+            mdo
+          </li>
+          <li class="list-group-item">
+            <span class="label label-default label-pill pull-right">8</span>
+            fat
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-8 column">
+        <ul class="list-group messages">
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">prijindal</h4><span class="label label-pill label-default pull-right">50 minutes ago</span>
+            <p class="list-group-item-text">Hi, everybody</p>
+          </li>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">mdo</h4><span class="label label-pill label-default pull-right">20 minutes ago</span>
+            <p class="list-group-item-text">Hey everybody, what's cooking?</p>
+          </li>
+          <div class="alert alert-success system text-center" role="alert">
+            <strong>fat</strong> joined the room
+          </div>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">fat</h4><span class="label label-pill label-default pull-right">Just now</span>
+            <p class="list-group-item-text">i need food</p>
+          </li>
+        </ul>
+        <div class="chat-input">
+          <div class="typing">
+            <span class="label label-primary">prijindal is typing</span>
+            <span class="label label-success">mdo is typing</span>
+          </div>
+          <form disabled="true">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">prijindal: </span>
+              <input type="text" class="form-control" placeholder="Enter message...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Send!</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

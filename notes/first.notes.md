@@ -16,8 +16,7 @@
 - [Angular-Socket](https://github.com/btford/angular-socket-io)
 - Bootstrap (Just for Bootstrapping)
 
-
-##Tasks
-
-- Basic Wireframe
--
+## Tasks
+- Complete Front end
+- Do the Back end
+- Do Angular

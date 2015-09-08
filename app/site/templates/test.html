@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    var socket = io.connect('http://localhost')
+    socket.on('user_connect', function(userDetails) {
+      console.log('User Connected:', userDetails)
+    })
+
+    socket.on('user_disconnect', function(userDetails) {
+      console.log('User Disconnected:', userDetails)
+    })
+
+    socket.on('typing', function(userDetails) {
+      console.log('User is typing:', userDetails)
+    })
+
+    socket.on('message', function(data) {
+      console.log('User sended message:', data)
+    })
+
+    socket.on('users-list', function(data) {
+      console.log('All Users:', data)
+    })
+  </script>
+</html>

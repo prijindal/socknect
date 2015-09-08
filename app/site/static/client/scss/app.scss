@@ -1,1 +1,57 @@
-@import "../bower_components/bootstrap/scss/bootstrap.scss"
+$grid-gutter-width: 0;
+@import "../bower_components/bootstrap/scss/bootstrap.scss";
+
+$input-height:80px;
+
+html,
+body,
+.container-fluid {
+  height: 100%;
+}
+.column{
+  @include media-breakpoint-up(sm) {
+    height: 100%;
+  }
+  overflow:auto;
+}
+.people.list-group {
+  @include media-breakpoint-up(sm) {
+    height: 100%;
+  }
+  padding-top:10px;
+  padding-right:5px;
+  border-color:#333;
+  border-style:solid;
+  border-width:0;
+  border-bottom-width:2px;
+  @include media-breakpoint-up(sm) {
+    border-bottom-width:0;
+    border-right-width:2px;
+  }
+}
+.chat-input {
+  position: fixed;
+  bottom: 0;
+  max-height: $input-height;
+}
+.messages.list-group {
+  margin-bottom: $input-height;
+  min-width: 100%;
+}
+.system.alert {
+  margin-bottom: 0;
+}
+.typing {
+  margin-left:5px;
+  .label {
+    margin:0 5px;
+  }
+}
+
+
+
+
+
+.main.jumbotron {
+  background-color: blanchedalmond;
+}
