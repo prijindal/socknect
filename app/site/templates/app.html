@@ -28,13 +28,13 @@
           </div>
         </ul>
         <div class="chat-input">
-          <div class="typing" ng-show="app.typing.username">
-            <span class="label label-primary">{{app.typing.username}} is typing</span>
+          <div class="typing">
+            <span ng-repeat="(key, value) in app.typing" class="label label-primary">{{key}} is typing</span>
           </div>
           <form disabled="true" ng-submit="app.send()">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">{{app.current}}: </span>
-              <input type="text" class="form-control" placeholder="Enter message..." ng-keyup="app.type()" ng-model="app.message">
+              <input id="message" type="text" class="form-control" placeholder="Enter message..." ng-keydown="app.resetTimer()" ng-keyup="app.type()" ng-model="app.message">
               <span class="input-group-btn">
                 <button class="btn btn-secondary" type="button">Send!</button>
               </span>

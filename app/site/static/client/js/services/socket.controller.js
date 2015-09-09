@@ -17,6 +17,10 @@ angular.module('Socknet')
             socket.emit('typing')
           }
 
+          var stopType = function() {
+              socket.emit('stop_typing')
+          }
+
           var send = function(data) {
             if (data) {
               socket.emit('message',data)
@@ -50,6 +54,12 @@ angular.module('Socknet')
             })
           }
 
+          var stop_typing = function(callback) {
+            socket.on('stop_typing', function(data) {
+              callback(data)
+            })
+          }
+
           var message = function(callback) {
             socket.on('message', function(data) {
               data.time = new Date()
@@ -61,11 +71,13 @@ angular.module('Socknet')
             login:login,
             logout:logout,
             type:type,
+            stopType:stopType,
             send:send,
             user_connect:user_connect,
             users_list:users_list,
             user_disconnect:user_disconnect,
             typing:typing,
+            stop_typing:stop_typing,
             message:message
           }
         })

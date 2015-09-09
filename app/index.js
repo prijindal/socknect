@@ -45,4 +45,8 @@ io.on('connection', function (socket) {
     socket.on('typing', function() {
         socket.broadcast.emit('typing', {username:people[socket.id]})
     })
+
+    socket.on('stop_typing', function() {
+        socket.broadcast.emit('stop_typing', {username:people[socket.id]})
+    })
 });

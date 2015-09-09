@@ -22,9 +22,11 @@ assets = {
     },
     vendorjs:{
         source:[
+            './app/site/static/client/bower_components/jquery/dist/jquery.js',
             './app/site/static/client/bower_components/angular/angular.js',
             './app/site/static/client/bower_components/angular-route/angular-route.js',
-            './app/site/static/client/bower_components/angular-timeago/dist/angular-timeago.js'
+            './app/site/static/client/bower_components/angular-timeago/dist/angular-timeago.js',
+            './app/site/static/client/bower_components/bootstrap//dist/js/bootstrap.js'
         ],
         dest:{
             path:'./app/site/static/build/js/',

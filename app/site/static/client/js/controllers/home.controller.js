@@ -1,8 +1,8 @@
 angular.module('Socknet')
-        .controller('appCtrl', 
-          ['$scope', '$http','$filter', 'Auth', 'mainSocket', 
+        .controller('appCtrl',
+          ['$scope', '$http','$filter', 'Auth', 'mainSocket',
           function($scope,$http, $filter, Auth, mainSocket){
-          
+
           var self = this;
           var user = Auth.getUser();
           console.log(user);
@@ -31,8 +31,22 @@ angular.module('Socknet')
                   self.users = data
                 })
 
+          var typingTimer;
+          var messageInput = angular.element('#message');
+
+          self.resetTimer = function() {
+              clearTimeout(typingTimer);
+          }
+
           self.type = function() {
-            mainSocket.type()
+              clearTimeout(typingTimer);
+              setTimeout(doneTyping, 2000)
+              mainSocket.type()
+          }
+
+          doneTyping = function() {
+              console.log('Done Typing')
+              mainSocket.stopType()
           }
 
           self.send = function(message) {
@@ -64,10 +78,18 @@ angular.module('Socknet')
           })
 
           mainSocket.typing(function(data) {
-            console.log('Someone is typing',data)
-            self.typing = data
+            //console.log('Someone is typing',data)
+            self.typing[data.username] = 1;
+            console.log(self.typing)
             $scope.$digest()
-          })
+        })
+
+        mainSocket.stop_typing(function(data) {
+            //console.log('Someone stopped typing', data)
+            delete self.typing[data.username]
+            console.log(self.typing)
+            $scope.$digest()
+        })
 
           mainSocket.message(function(data) {
             console.log('Someone said',data)
