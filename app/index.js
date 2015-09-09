@@ -4,13 +4,14 @@ var app = express();
 
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var port = process.env.PORT || 8080
 
-server.listen(80, function() {
+server.listen(port, function() {
     console.log('SERVER IS ON...')
 });
 
-app.use('/static', express.static('./site/static/build/'))
-app.use('/templates', express.static('./site/templates/'))
+app.use('/static', express.static('./app/site/static/build/'))
+app.use('/templates', express.static('./app/site/templates/'))
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/site/index.html');

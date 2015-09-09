@@ -2,7 +2,7 @@ angular.module('Socknet')
         .service('mainSocket', function(){
           var socket;
           var init = function() {
-            socket = io.connect('http://localhost')
+            socket = io.connect()
           }
 
           var login = function(username) {
