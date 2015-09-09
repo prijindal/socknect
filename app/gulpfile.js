@@ -1,3 +1,7 @@
+var env = process.env.NODE_ENV || 'development'
+
+var gulp;
+
 assets = {
     scss:{
         source:'./site/static/client/scss/app.scss',
@@ -29,4 +33,9 @@ assets = {
     }
 }
 
-var gulp = require('./gulp/development');
+if(env == 'development') {
+    gulp = require('./gulp/development.js')
+}
+else {
+    gulp = require('./gulp/production.js')
+}
