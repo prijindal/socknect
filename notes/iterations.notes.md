@@ -1,6 +1,6 @@
 
 ## Iterations
-1. Simple Public room where people can put their name and chat
+1. Simple Public room where people can put their name and chat :checkered_flag:
 2. User to User chat
 3. Private Rooms
 4. Adding Friends and Login

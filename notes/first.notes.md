@@ -16,5 +16,4 @@
 - [Angular-Socket](https://github.com/btford/angular-socket-io)
 - Bootstrap (Just for Bootstrapping)
 
-## Tasks
-- Do Angular
+### First Iteration Completed
