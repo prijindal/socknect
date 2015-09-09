@@ -34,8 +34,8 @@ assets = {
 }
 
 if(env == 'development') {
-    gulp = require('./gulp/development.js')
+    gulp = require('./app/gulp/development.js')
 }
 else {
-    gulp = require('./gulp/production.js')
+    gulp = require('./app/gulp/production.js')
 }
