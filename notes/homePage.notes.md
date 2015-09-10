@@ -1,6 +1,6 @@
 # Routes
 - / `Home Page, Login Form`
-- /home `Main App`
+- /app `Main App`
 
 # Design
 - A sidebar with all the connected people

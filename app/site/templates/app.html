@@ -9,7 +9,7 @@
         <button class="btn btn-success-outline" ng-click="app.logout()">Logout</button>
         </ul>
       </div>
-      <div class="col-sm-8 col-lg-9 col-xl-10 column">
+      <div class="col-sm-8 col-lg-9 col-xl-10 column" id="message-container">
         <ul class="list-group messages">
           <div ng-repeat="message in app.messages">
             <li ng-if="message.type=='chat'" class="list-group-item">

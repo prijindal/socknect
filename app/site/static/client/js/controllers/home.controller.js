@@ -1,7 +1,7 @@
 angular.module('Socknet')
         .controller('appCtrl',
-          ['$scope', '$http','$filter', 'Auth', 'mainSocket',
-          function($scope,$http, $filter, Auth, mainSocket){
+          ['$scope','$filter', 'Auth', 'mainSocket',
+          function($scope, $filter, Auth, mainSocket){
 
           var self = this;
           var user = Auth.getUser();
@@ -26,11 +26,6 @@ angular.module('Socknet')
             return count
           }
 
-          $http.post('/users')
-                .success(function(data) {
-                  self.users = data
-                })
-
           var typingTimer;
           var messageInput = angular.element('#message');
 
@@ -39,6 +34,7 @@ angular.module('Socknet')
           }
 
           self.type = function() {
+              console.log(this)
               clearTimeout(typingTimer);
               setTimeout(doneTyping, 2000)
               mainSocket.type()
@@ -97,5 +93,8 @@ angular.module('Socknet')
                 type:'chat',username:data.username, message:data.message, time:data.time
               })
             $scope.$digest()
+            var messageContainer = angular.element('#message-container')
+            messageContainer.scrollTop(99999999999999999999);
           })
+          mainSocket.refresh_users()
         }])

@@ -66,6 +66,10 @@ angular.module('Socknet')
               callback(data)
             })
           }
+
+          var refresh_users = function() {
+                socket.emit('refresh_users')
+          }
           return {
             init:init,
             login:login,
@@ -78,6 +82,7 @@ angular.module('Socknet')
             user_disconnect:user_disconnect,
             typing:typing,
             stop_typing:stop_typing,
-            message:message
+            message:message,
+            refresh_users:refresh_users
           }
         })
