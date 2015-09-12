@@ -52,6 +52,7 @@ angular.module('Socknet')
 
 
           mainSocket.user_connect(function(data) {
+            data.time = new Date()
             console.log('New User Connected:',data)
             self.messages.push({
                 type:'alert', connect:1,username:data.username,time:data.time
@@ -66,6 +67,7 @@ angular.module('Socknet')
           })
 
           mainSocket.user_disconnect(function(data) {
+            data.time = new Date()
             console.log('User Disconnected',data)
             self.messages.push({
                 type:'alert', connect:0,username:data.username,time:data.time
@@ -87,14 +89,15 @@ angular.module('Socknet')
             $scope.$digest()
         })
 
-          mainSocket.message(function(data) {
-            console.log('Someone said',data)
-            self.messages.push({
-                type:'chat',username:data.username, message:data.message, time:data.time
-              })
-            $scope.$digest()
-            var messageContainer = angular.element('#message-container')
-            messageContainer.scrollTop(99999999999999999999);
-          })
-          mainSocket.refresh_users()
-        }])
+        mainSocket.message(function(data) {
+          data.time = new Date()
+          console.log('Someone said',data)
+          self.messages.push({
+              type:'chat',username:data.username, message:data.message, time:data.time
+            })
+          $scope.$digest()
+          var messageContainer = angular.element('#message-container')
+          messageContainer.scrollTop(99999999999999999999);
+        })
+        mainSocket.refresh_users()
+      }])
