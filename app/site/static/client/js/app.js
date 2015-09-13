@@ -14,6 +14,9 @@ angular.module('Socknet', [
             controller:'appCtrl',
             controllerAs:'app'
         })
+        .when('/chat', {
+            templateUrl:'templates/chat.html'
+        })
 
         $routeProvider
         .otherwise({
@@ -23,7 +26,7 @@ angular.module('Socknet', [
     .run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth) {
         $rootScope.$on('$routeChangeStart', function(event) {
             if (Auth.isLoggedIn()) {
-                $location.path('/app')
+                //$location.path('/app')
             }
             else {
                 $location.path('/')

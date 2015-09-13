@@ -24,7 +24,12 @@ gulp.task('vendor:js', function() {
             .pipe(gulp.dest(assets.vendorjs.dest.path))
 })
 
-gulp.task('build', ['sass', 'vendor:js', 'js'])
+gulp.task('vendor:css', function() {
+    return gulp.src(assets.vendorcss.source)
+            .pipe(gulp.dest(assets.vendorcss.dest.path))
+})
+
+gulp.task('build', ['sass', 'vendor:js','vendor:css', 'js'])
 
 gulp.task('watch', ['build'], function() {
     gulp.watch(assets.scss.watch, ['sass'])

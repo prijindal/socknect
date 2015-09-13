@@ -1,14 +1,17 @@
-
-    <nav class="navbar navbar-light bg-faded">
-      <a class="navbar-brand" href="#">SocKnet</a>
-      <form class="form-inline navbar-form pull-right" ng-submit="login.submit()">
-        <input class="form-control" type="text" placeholder="Enter a username" ng-model="login.user.username">
-        <button class="btn btn-success-outline" type="submit">Chat</button>
-      </form>
-    </nav>
-    <div class="jumbotron main">
-      <div class="container">
-        <h1>SocKnect</h1>
-        <p class="lead">Simple Chat Application</p>
+   <div class="ui top menu">
+      <a class="ui left header item hide-md">
+         Socknect
+      </a>
+      <div class="ui right item">
+         <form class="ui action icon input" ng-submit="login.submit()">
+            <input class="prompt" type="text" placeholder="Enter a username"ng-model="login.user.username">
+            <button class="ui button">Login</button>
+         </form>
       </div>
-    </div>
+   </div>
+   <div class="ui jumbotron inverted vertical segment center aligned">
+      <div class="ui text container">
+         <h1 class="ui inverted header">Socknect</h1>
+         <h3>A simple Chat Application</h3>
+      </div>
+   </div>
