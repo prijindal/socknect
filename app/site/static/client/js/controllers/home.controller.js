@@ -2,7 +2,7 @@ angular.module('Socknet')
         .controller('appCtrl',
           ['$scope','$filter', 'Auth', 'mainSocket',
           function($scope, $filter, Auth, mainSocket){
-
+          $scope.sidebarShow = false
           var self = this;
           var user = Auth.getUser();
           console.log(user);
@@ -100,4 +100,14 @@ angular.module('Socknet')
           messageContainer.scrollTop(99999999999999999999);
         })
         mainSocket.refresh_users()
+        $('.menu .item')
+          .tab()
+        ;
+
+        angular.element('.ui.tab').on('click', function() {
+          if($scope.sidebarShow) {
+            $scope.sidebarShow = false
+            $scope.$digest();
+          }
+        });
       }])
