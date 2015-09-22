@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 
 gulp.task('sass', function() {
     return gulp.src(assets.scss.source)
-            .pipe(sass({compressed:true}))
+            .pipe(sass({compressed:true, loadPath:'./app/site/static/client/bower_components/Materialize/sass/'}))
             .pipe(gulp.dest(assets.scss.dest))
 })
 
@@ -20,10 +20,15 @@ gulp.task('vendor:js', function() {
             .pipe(gulp.dest(assets.vendorjs.dest.path))
 })
 
+gulp.task('vendor:fonts', function() {
+    return gulp.src(assets.fonts.source)
+            .pipe(gulp.dest(assets.fonts.dest.path))
+})
+
 gulp.task('vendor:css', function() {
     return gulp.src(assets.vendorcss.source)
             .pipe(sass({compressed:true}))
             .pipe(gulp.dest(assets.vendorcss.dest.path))
 })
 
-gulp.task('build', ['sass', 'vendor:js','vendor:css', 'js'])
+gulp.task('build', ['sass', 'vendor:js','vendor:css','vendor:fonts', 'js'])
