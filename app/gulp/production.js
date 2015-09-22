@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 
 gulp.task('sass', function() {
     return gulp.src(assets.scss.source)
-            .pipe(sass({compressed:true, includePaths :'./app/site/static/client/bower_components/Materialize/sass/'}))
+            .pipe(sass({compressed:true, includePaths :['./app/site/static/client/bower_components/Materialize/sass/']}))
             .pipe(gulp.dest(assets.scss.dest))
 })
 
