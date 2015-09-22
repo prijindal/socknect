@@ -1,17 +1,22 @@
-   <div class="ui top menu">
-      <a class="ui left header item hide-md">
-         Socknect
-      </a>
-      <div class="ui right item">
-         <form class="ui action icon input" ng-submit="login.submit()">
-            <input class="prompt" type="text" placeholder="Enter a username"ng-model="login.user.username">
-            <button class="ui button">Login</button>
-         </form>
-      </div>
-   </div>
-   <div class="ui jumbotron inverted vertical segment center aligned">
-      <div class="ui text container">
-         <h1 class="ui inverted header">Socknect</h1>
-         <h3>A simple Chat Application</h3>
-      </div>
-   </div>
+   <div id="index-banner" class="parallax-container">
+       <div class="section no-pad-bot">
+         <div class="container">
+           <br><br>
+           <h1 class="header center teal-text text-lighten-2">Socknect</h1>
+           <div class="row center">
+             <h5 class="header col s12 light">A simple Chat Application</h5>
+           </div>
+           <div class="row center">
+             <form class="login-form row" ng-submit="login.submit()">
+                <div class="input-field col s12">
+                    <input type="text" id="username" ng-model="login.user.username">
+                    <label for="username">Enter a Username</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                  <i class="mdi-social-group right"></i>
+                </button>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>

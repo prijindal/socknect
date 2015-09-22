@@ -14,9 +14,6 @@ angular.module('Socknet', [
             controller:'appCtrl',
             controllerAs:'app'
         })
-        .when('/chat', {
-            templateUrl:'templates/chat.html'
-        })
 
         $routeProvider
         .otherwise({

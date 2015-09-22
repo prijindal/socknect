@@ -26,18 +26,18 @@ assets = {
             './app/site/static/client/bower_components/angular/angular.js',
             './app/site/static/client/bower_components/angular-route/angular-route.js',
             './app/site/static/client/bower_components/angular-timeago/dist/angular-timeago.js',
-            './app/site/static/client/bower_components/semantic/dist/semantic.js'
+            './app/site/static/client/bower_components/Materialize/dist/js/materialize.js'
         ],
         dest:{
             path:'./app/site/static/build/js/',
             filename:'vendor.js',
         }
     },
-    vendorcss:{
-        source:['./app/site/static/client/bower_components/semantic/dist/semantic.css'],
+    fonts:{
+        source:['./app/site/static/client/bower_components/Materialize/dist/font/**/*'],
         dest:{
-            path:'./app/site/static/build/css/',
-            filename:'vendor.css'
+            path:'./app/site/static/build/font',
+            filename:'fonts.css'
         }
     }
 }

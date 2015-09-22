@@ -46,8 +46,8 @@ angular.module('Socknet')
           }
 
           self.send = function(message) {
-            mainSocket.send(self.message)
-            self.message = ''
+              mainSocket.send(self.message)
+              self.message = ''
           }
 
 
@@ -73,6 +73,7 @@ angular.module('Socknet')
                 type:'alert', connect:0,username:data.username,time:data.time
               })
             $scope.$digest()
+            scrollToBottom()
           })
 
           mainSocket.typing(function(data) {
@@ -96,18 +97,16 @@ angular.module('Socknet')
               type:'chat',username:data.username, message:data.message, time:data.time
             })
           $scope.$digest()
-          var messageContainer = angular.element('#message-container')
-          messageContainer.scrollTop(99999999999999999999);
+          scrollToBottom()
         })
         mainSocket.refresh_users()
-        $('.menu .item')
-          .tab()
-        ;
 
-        angular.element('.ui.tab').on('click', function() {
-          if($scope.sidebarShow) {
-            $scope.sidebarShow = false
-            $scope.$digest();
-          }
+        var scrollToBottom = function() {
+            var messageContainer = angular.element('body')
+            messageContainer.scrollTop(99999999999999999999);
+        }
+
+        $(document).ready(function(){
+            $('ul.tabs').tabs();
         });
       }])

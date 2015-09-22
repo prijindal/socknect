@@ -1,94 +1,101 @@
-<div class="chat container">
-   <div class="ui vertical inverted left-menu menu top" ng-class="{'sidebar-show': sidebarShow}">
-     <a ng-class="{'active':app.current==value}" class="teal item"  ng-repeat="(key, value) in app.users">
-       {{value}}
-       <div ng-class="{'teal':app.current==value}" class="ui label">{{app.getMessages(value)}}</div>
-     </a>
-     <button class="ui fluid negative button" ng-click="app.logout()">Logout</button>
+<!-- <div>
+   <div ng-class="{'sidebar-show': sidebarShow}">
+     <button ng-click="app.logout()">Logout</button>
    </div>
-   <div class="pusher">
-   <div class="ui top attached tabular menu">
-      <a class="sidebar-icon icon item" ng-click="sidebarShow = !sidebarShow">
-        <i class="sidebar icon"></i>
-      </a>
-      <a class="item active" data-tab="public">Public</a>
-      <a class="item" data-tab="mdo">mdo</a>
-    </div>
-   <div class="ui bottom attached tab segment active" data-tab="public">
-      <div class="messages" id="message-container">
-         <div class="message" ng-repeat="message in app.messages">
-            <div ng-if="message.type=='chat'" class="ui comments">
-               <div class="comment">
-                 <div class="content">
-                     <a class="author">{{message.username}}</a>
-                     <div class="metadata">
-                        <div class="date" ng-bind="getCurrentTime(message.time)"></div>
+   <div>
+   <div>
+   <div data-tab="public">
+      <div id="message-container">
+         <div ng-repeat="message in app.messages">
+            <div ng-if="message.type=='chat'">
+               <div>
+                 <div>
+                     <a>{{message.username}}</a>
+                     <div>
+                        <div ng-bind="getCurrentTime(message.time)"></div>
                      </div>
-                     <div class="text">
+                     <div>
                         {{message.message}}
                      </div>
                   </div>
               </div>
             </div>
-            <div ng-if="message.type=='alert' && message.connect==0"  class="ui inverse feed">
-               <div class="event">
-                  <div class="content">
-                     <div class="summary">
-                        <a class="ui red image label user">
+            <div ng-if="message.type=='alert' && message.connect==0">
+               <div>
+                  <div>
+                     <div>
+                        <a>
                            {{message.username}}
                         </a> left the room
-                        <div class="date" ng-bind="getCurrentTime(message.time)"></div>
+                        <div ng-bind="getCurrentTime(message.time)"></div>
                      </div>
                   </div>
                </div>
             </div>
-            <div ng-if="message.type=='alert' && message.connect==1"  class="ui inverse feed">
-               <div class="event">
-                  <div class="content">
-                     <div class="summary">
-                        <a class="ui green image label user">
+            <div ng-if="message.type=='alert' && message.connect==1">
+               <div>
+                  <div>
+                     <div>
+                        <a>
                            {{message.username}}
                         </a> joined the room
-                        <div class="date" ng-bind="getCurrentTime(message.time)"></div>
+                        <div ng-bind="getCurrentTime(message.time)"></div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <div class="typing">
-         <a ng-repeat="(key, value) in app.typing" class="ui teal image label">{{key}}</a>
-      </div>
    </div>
-   <div class="chats ui bottom attached tab segment" data-tab="mdo">
-      <div class="messages" id="message-container">
-         <div class="message" ng-repeat="message in app.messages">
-            <div ng-if="message.type=='chat'" class="ui comments">
-               <div class="comment">
-                 <div class="content">
-                     <a class="author">{{message.username}}</a>
-                     <div class="metadata">
-                        <div class="date" ng-bind="getCurrentTime(message.time)"></div>
-                     </div>
-                     <div class="text">
-                        {{message.message}}
-                     </div>
-                  </div>
-              </div>
-            </div>
-         </div>
-      </div>
-      <div class="typing">
-         <a ng-repeat="(key, value) in app.typing" class="ui teal image label">{{key}}</a>
-      </div>
-    </div>
+  </div>
+</div> -->
 
-      <form class="ui labeled fluid large action input" ng-submit="app.send()">
-         <div class="ui label">
-            {{app.current}}: 
-         </div>
-        <input type="text" placeholder="Enter your message..." ng-keydown="app.resetTimer()" ng-keyup="app.type()" ng-model="app.message" tabindex="1">
-        <button class="ui button">Send!</button>
+
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6"><a class="active" href="#public">Public</a></li>
+      <li class="tab col s6"><a href="#users">Users</a></li>
+    </ul>
+  </div>
+
+  <div id="public" class="col s12">
+    <ul class="chat-collection">
+      <li ng-repeat="message in app.messages">
+        <div class="chat-item" ng-if="message.type=='chat'" ng-class="message.username==app.current ? 'self light-blue lighten-5':'alias'">
+          <span class="right" ng-bind="getCurrentTime(message.time)"></span>
+          <div class="title">{{message.username}}</div>
+          <span>{{message.message}}</span>
+        </div>
+        <div class="toast" ng-if="message.type=='alert'" ng-class="message.connect ? 'green' : 'red'">
+          <div class="title">{{message.username}}
+            <span class="message">{{message.connect ? 'joined' : 'left'}}</span>
+          </div>
+          <span class="right" ng-bind="getCurrentTime(message.time)"></span>
+        </div>
+      </li>
+    </ul>
+    <div class="chat-input">
+      <div class="users-typing">
+        <div ng-repeat="(key, value) in app.typing" class="chip">
+          {{key}}
+        </div>
+        <span class="is-typing">are typing</span>
+      </div>
+      <form class="chat-container" ng-submit="app.send()">
+        <div class="s3">{{app.current}}:</div>
+        <input placeholder="Enter message" ng-keydown="app.resetTimer()" ng-keyup="app.type()" ng-model="app.message">
+        <button type="submit"><i class="mdi-social-group"></i></button>
       </form>
+    </div>
+  </div>
+
+  <div id="users" class="col s12">
+    <ul class="collection">
+      <a ng-class="{'active':app.current==value}" ng-repeat="(key, value) in app.users" class="collection-item">
+        {{value}}<span ng-class="{'new':app.current==value}" class="badge">{{app.getMessages(value)}}</span>
+      </a>
+    </ul>
+    <a class="red waves-effect waves-light btn" ng-click="app.logout()">Logout</a>
   </div>
 </div>
