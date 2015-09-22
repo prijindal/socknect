@@ -25,10 +25,5 @@ gulp.task('vendor:fonts', function() {
             .pipe(gulp.dest(assets.fonts.dest.path))
 })
 
-gulp.task('vendor:css', function() {
-    return gulp.src(assets.vendorcss.source)
-            .pipe(sass({compressed:true}))
-            .pipe(gulp.dest(assets.vendorcss.dest.path))
-})
 
-gulp.task('build', ['sass', 'vendor:js','vendor:css','vendor:fonts', 'js'])
+gulp.task('build', ['sass', 'vendor:js','vendor:fonts', 'js'])
