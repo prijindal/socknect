@@ -49,6 +49,10 @@ angular.module('Socknet')
               self.message = ''
           }
 
+          self.isTyping = function() {
+              return Object.keys(self.typing).length > 0
+          }
+
 
           mainSocket.user_connect(function(data) {
             data.time = new Date()

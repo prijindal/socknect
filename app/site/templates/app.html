@@ -27,7 +27,9 @@
         <div ng-repeat="(key, value) in app.typing" class="chip">
           {{key}}
         </div>
-        <span class="is-typing">are typing</span>
+        <span ng-show="app.isTyping()" class="is-typing">
+          {{Object.keys(app.typing).length > 1 ? 'are': 'is'}} typing
+        </span>
       </div>
       <form class="chat-container" ng-submit="app.send()">
         <div class="s3">{{app.current}}:</div>
@@ -39,7 +41,7 @@
 
   <div id="users" class="col s12">
     <ul class="collection">
-      <a ng-class="{'active':app.current==value}" ng-repeat="(key, value) in app.users" class="collection-item">
+      <a class="collection-item" ng-class="{'active':app.current==value}" ng-repeat="(key, value) in app.users" ng-href="#/user">
         {{value}}<span ng-class="{'new':app.current==value}" class="badge">{{app.getMessages(value)}}</span>
       </a>
     </ul>

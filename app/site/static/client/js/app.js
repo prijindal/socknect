@@ -14,6 +14,11 @@ angular.module('Socknet', [
             controller:'appCtrl',
             controllerAs:'app'
         })
+        .when('/user', {
+            templateUrl:'templates/user.html',
+            controller:'appCtrl',
+            controllerAs:'app'
+        })
 
         $routeProvider
         .otherwise({
